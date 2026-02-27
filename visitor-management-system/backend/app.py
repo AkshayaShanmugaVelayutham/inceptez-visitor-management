@@ -16,6 +16,12 @@ load_dotenv()
 
 app = Flask(__name__)
 CORS(app, origins=["*"])  # Allow all origins for development
+import os
+
+db_host = os.getenv("DB_HOST")
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+db_name = os.getenv("DB_NAME")
 
 # ============================================================
 # DATABASE CONFIGURATION - MYSQL (SQL DATABASE)
@@ -389,3 +395,5 @@ with app.app_context():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+app.run(host="0.0.0.0", port=5000)
